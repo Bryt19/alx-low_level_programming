@@ -1,18 +1,15 @@
+#include "main.h"
 /**
- * reverse_array - reverses an array
- *
- * @a: array to reverse
- * @n: size of array
+ * print_rev - print string in reverse
+ * @s : pointer to s as char
+ * Return: Nothing
  */
-void reverse_array(int *a, int n)
+void print_rev(char *s)
 {
-	int i;
-	int t;
-
-	for (i = 0; i < n / 2; i++)
+	while (*s)
 	{
-		t = a[i];
-		a[i] = a[n - i - 1];
-		a[n - i - 1] = t;
+		printf("%c", *s);
+		s--;
 	}
+	printf("\n");
 }
