@@ -31,4 +31,4 @@ char *_strdup(char *str)
 		i++;
 
 	return (dup);
-} by Bryt19
+} 
