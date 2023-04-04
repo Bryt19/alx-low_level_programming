@@ -1,28 +1,15 @@
 #include "lists.h"
-#include <stdlib.h>
 
-listint_t *add_nodeint_end(listint_t **head, const int n)
+
+
+size_t listint_len(const listint_t *h)
 {
-	listint_t *new;
-	listint_t *temp;
+	size_t count = 0;
 
-	if (head == NULL)
-		return (NULL);
-	new = malloc(sizeof(listint_t));
-	if (new == NULL)
-		return (NULL);
-	new->n = n;
-	new->next = NULL;
-	if (*head == NULL)
+	while (h != NULL)
 	{
-	*head = new;
-		return (new);
+		h = h->next;
+		count++;
 	}
-	temp = *head;
-	while (temp->next != NULL)
-	{
-		temp = temp->next;
-	}
-	temp->next = new;
-	return (new);
+	return (count);
 }
