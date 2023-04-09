@@ -1,19 +1,48 @@
 #include "main.h"
-
 /**
- * get_bit - returns the value of a bit at a given index
- * @n: the number to retrieve the bit from
- * @index: the index of the bit to retrieve, starting from 0
+ * _power - Custom implementation of exponentiation.
+ * @base: The base value.
+ * @pow: The power value.
  *
- * Return: the value of the bit at the given index, or -1 if an error occurred
+ * Return: The result of base raised to the power of pow.
  */
-int get_bit(unsigned long int n, unsigned int index)
+unsigned long int _power(unsigned int base, unsigned int pow)
 {
-	unsigned int num_bits = sizeof(unsigned long int) * 8;
+	unsigned long int num;
+	unsigned int i;
 
-	if (index >= num_bits)
-		return (-1);
-
-	return ((n >> index) & 1);
+	num = 1;
+	for (i = 1; i <= pow; i++)
+		num *= base;
+	return (num);
 }
+/**
+ * print_binary - Prints the binary representation of a number.
+ * @n: The number to print in binary.
+ *
+ * Return: None.
+ */
+void print_binary(unsigned long int n)
+{
+	unsigned long int dev, result;
+	char flag;
 
+	flag = 0;
+	dev = _power(2, sizeof(unsigned long int) * 8 - 1);
+
+	while (dev != 0)
+	{
+		result = n & dev;
+		if (result == dev)
+		{
+			flag = 1;
+			_putchar('1');
+
+		}
+		else if (flag == 1 || dev == 1)
+		{
+			_putchar('0');
+		}
+		dev >>= 1;
+	}
+}
